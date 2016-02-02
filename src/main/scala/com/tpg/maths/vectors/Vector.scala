@@ -11,6 +11,10 @@ case class Vector(elements: IndexedSeq[BigDecimal]) {
   def -(that: Vector): Option[Vector] = if (that.dimension == this.dimension) { Some(subtract(that)) } else { None }
 
   private def subtract(that: Vector): Vector = Vector((0 until dimension) map { i => this.elements(i) - that.elements(i) })
+
+  def *(value: BigDecimal) = Vector(this.elements map { e => e * value})
+
+  def norm: BigDecimal = scala.math.pow((elements.map { e => e * e }).sum.toDouble, 0.5)
 }
 
 object Vector {

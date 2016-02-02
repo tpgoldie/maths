@@ -25,5 +25,14 @@ class VectorSpec extends FunSpec with Matchers {
       val actual = Vector(-1, 0, -5, 1) - v1
       actual should be (None)
     }
+
+    it("can be multiplied by a scalar") {
+      val actual = Vector(-1, 0, 5) * 4.5
+      actual should be (Vector(-4.5, 0, 5 * 4.5))
+    }
+
+    it("has a magntitude") {
+      v1.norm should be(scala.math.pow(4 + 9 + 64, 0.5))
+    }
   }
 }
