@@ -4,6 +4,8 @@ package com.tpg.maths.vectors
 case class Vector(elements: IndexedSeq[BigDecimal]) {
   val dimension: Int = elements.size
 
+  def at(i: Int): BigDecimal =  elements(i)
+
   def +(that: Vector): Option[Vector] = if (that.dimension == this.dimension) { Some(add(that)) } else { None }
 
   private def add(that: Vector): Vector = Vector((0 until dimension) map { i => this.elements(i) + that.elements(i) })
