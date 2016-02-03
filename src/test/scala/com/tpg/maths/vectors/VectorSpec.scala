@@ -1,5 +1,9 @@
 package com.tpg.maths.vectors
 
+import com.tpg.maths.vectors.i._
+import com.tpg.maths.vectors.j._
+import com.tpg.maths.vectors.k._
+
 import org.scalatest.{Matchers, FunSpec}
 
 class VectorSpec extends FunSpec with Matchers {
@@ -31,8 +35,8 @@ class VectorSpec extends FunSpec with Matchers {
       actual should be (Vector(-4.5, 0, 5 * 4.5))
     }
 
-    it("has a magntitude") {
-      v1.norm should be(scala.math.pow(4 + 9 + 64, 0.5))
+    it("has a standard basis representation for vectors in R3") {
+      v1.sbr should be((toI(2), toJ(-3), toK(8)))
     }
   }
 }
