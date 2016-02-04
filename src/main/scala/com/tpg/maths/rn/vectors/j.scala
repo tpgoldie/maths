@@ -1,4 +1,4 @@
-package com.tpg.maths.vectors
+package com.tpg.maths.rn.vectors
 
 case class j(y: BigDecimal) extends BasisElement(Vector(0, 1, 0), "j") {
   override def toString: String = s"${y}j"

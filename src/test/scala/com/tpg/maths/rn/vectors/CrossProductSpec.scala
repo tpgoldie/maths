@@ -1,4 +1,4 @@
-package com.tpg.maths.vectors
+package com.tpg.maths.rn.vectors
 
 import org.scalatest.{FunSpec, Matchers}
 

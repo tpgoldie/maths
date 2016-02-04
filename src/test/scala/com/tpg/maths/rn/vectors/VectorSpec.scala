@@ -1,8 +1,8 @@
-package com.tpg.maths.vectors
+package com.tpg.maths.rn.vectors
 
-import com.tpg.maths.vectors.i._
-import com.tpg.maths.vectors.j._
-import com.tpg.maths.vectors.k._
+import com.tpg.maths.rn.vectors.i._
+import com.tpg.maths.rn.vectors.j._
+import com.tpg.maths.rn.vectors.k._
 
 import org.scalatest.{Matchers, FunSpec}
 

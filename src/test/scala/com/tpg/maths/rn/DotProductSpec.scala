@@ -1,5 +1,6 @@
-package com.tpg.maths.vectors
+package com.tpg.maths.rn
 
+import com.tpg.maths.rn.vectors.Vector
 import org.scalatest.{FunSpec, Matchers}
 
 class DotProductSpec extends FunSpec with Matchers {
