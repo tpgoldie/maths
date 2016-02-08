@@ -29,5 +29,15 @@ class QuarternionSpec extends FunSpec with Matchers {
     it ("can be conjugated") {
       q1.conjugate should be(Quaternion(1, 2, 0, 3))
     }
+
+    it ("has an antisymmetric part on multiplication with another quaternionß") {
+      val actual = q1.antisym(Quaternion(2, -3, 1, 5.5))
+      actual should be(Quaternion(0, 3, 20, -2))
+    }
+
+    it ("has a symmetric part on multiplication with another quaternionß") {
+      val actual = q1.sym(Quaternion(2, -3, 1, 5.5))
+      actual should be(Quaternion(12.5, -7, 1, -0.5))
+    }
   }
 }

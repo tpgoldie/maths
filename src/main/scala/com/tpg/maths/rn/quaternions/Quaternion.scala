@@ -29,6 +29,20 @@ case class Quaternion(q0: BigDecimal, q1: BigDecimal, q2: BigDecimal, q3: BigDec
   }
 
   def conjugate: Quaternion = Quaternion(q0, MinusOne * q1, MinusOne * q2, MinusOne * q3)
+
+  def antisym(that: Quaternion): Quaternion = Quaternion(0, this.q x that.q)
+
+  def sym(that: Quaternion): Quaternion = {
+    val q0 = this.q0
+    val q = this.q
+
+    val r0 = that.q0
+    val r = that.q
+
+    val s0 = (q0 * r0) - (q dot r)
+
+    Quaternion(s0, (r * q0) + (q * r0))
+  }
 }
 
 object Quaternion {
