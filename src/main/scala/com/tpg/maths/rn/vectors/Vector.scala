@@ -12,8 +12,6 @@ case class Vector(override val elements: IndexedSeq[BigDecimal]) extends Euclide
 
   def *(value: BigDecimal): Vector = Vector(multiplyBy(value))
 
-  def x(that: Vector): Option[Vector] = CrossProduct(this, that).crossProduct
-
   def sbr: (i, j, k) = (elements(0), elements(1), elements(2))
 }
 

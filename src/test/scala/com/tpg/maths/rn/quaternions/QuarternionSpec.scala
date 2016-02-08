@@ -20,5 +20,14 @@ class QuarternionSpec extends FunSpec with Matchers {
       val actual = q1 * -5.5
       actual should be(Quaternion(-5.5, 11, 0, 16.5))
     }
+
+    it ("can be multiplied by another quaternion") {
+      val actual = q1 * Quaternion(2, -3, 1, 5.5)
+      actual should be(Quaternion(12.5, -4, 21, -2.5))
+    }
+
+    it ("can be conjugated") {
+      q1.conjugate should be(Quaternion(1, 2, 0, 3))
+    }
   }
 }
