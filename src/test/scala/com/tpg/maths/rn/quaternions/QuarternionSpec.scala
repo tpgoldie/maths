@@ -34,6 +34,12 @@ class QuarternionSpec extends FunSpec with Matchers {
       actual should be(Quaternion(12.5, -4, 21, -2.5))
     }
 
+    it ("can have the inner product with another quaternion") {
+      val q1 = Quaternion(1, -2, 0, -3)
+      val actual = q1 dot Quaternion(2, -3, 1, 5.5)
+      actual should be(-8.5)
+    }
+
     it ("can be conjugated") {
       q1.conjugate should be(Quaternion(1, 2, 0, 3))
     }

@@ -47,9 +47,12 @@ case class Quaternion(q0: BigDecimal, q1: BigDecimal, q2: BigDecimal, q3: BigDec
 
   override def im: RThree = q
 
+
   def sbr: (J0, J1, J2, J3) = (J0(q0), J1(q1), J2(q2), J3(q3))
 
   override def toString: String = s"${sbr._1.toString}${sbr._2.toString}${sbr._3.toString}${sbr._4.toString}"
+
+  def dot(that: Quaternion): BigDecimal = super.innerProduct(that).get
 }
 
 object Quaternion {
