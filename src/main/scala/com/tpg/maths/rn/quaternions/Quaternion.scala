@@ -1,11 +1,10 @@
 package com.tpg.maths.rn.quaternions
 
-import com.sun.org.apache.xpath.internal.operations.Minus
 import com.tpg.maths.rn.quaternions.Quaternion.MinusOne
 import com.tpg.maths.rn.{RThree, EuclideanSpace}
 
 case class Quaternion(q0: BigDecimal, q1: BigDecimal, q2: BigDecimal, q3: BigDecimal)
-  extends EuclideanSpace(IndexedSeq(q0, q1, q2, q3)) {
+  extends EuclideanSpace(IndexedSeq(q0, q1, q2, q3)) with Symmetry with AntiSymmetry {
 
   val q: RThree = RThree(q1, q2, q3)
 
@@ -30,9 +29,9 @@ case class Quaternion(q0: BigDecimal, q1: BigDecimal, q2: BigDecimal, q3: BigDec
 
   def conjugate: Quaternion = Quaternion(q0, MinusOne * q1, MinusOne * q2, MinusOne * q3)
 
-  def antisym(that: Quaternion): Quaternion = Quaternion(0, this.q x that.q)
+  override def antisym(that: Quaternion): Quaternion = Quaternion(0, this.q x that.q)
 
-  def sym(that: Quaternion): Quaternion = {
+  override def sym(that: Quaternion): Quaternion = {
     val q0 = this.q0
     val q = this.q
 
