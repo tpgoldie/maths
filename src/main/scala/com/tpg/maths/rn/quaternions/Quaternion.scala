@@ -8,6 +8,10 @@ case class Quaternion(q0: BigDecimal, q1: BigDecimal, q2: BigDecimal, q3: BigDec
   val q: RThree = RThree(q1, q2, q3)
 
   def +(that: Quaternion): Quaternion = Quaternion(0 until dimensions map {i => this.elements(i) + that.elements(i) })
+
+  def -(that: Quaternion): Quaternion = Quaternion(0 until dimensions map {i => this.elements(i) - that.elements(i) })
+
+  def *(value: BigDecimal): Quaternion = Quaternion(0 until dimensions map {i => this.elements(i) * value })
 }
 
 object Quaternion {

@@ -1,5 +1,7 @@
 package com.tpg.maths.rn
 
 trait InnerProduct {
-  def innerProduct: Option[BigDecimal]
+  type T <: InnerProduct
+
+  def innerProduct(that: T): Option[BigDecimal]
 }
