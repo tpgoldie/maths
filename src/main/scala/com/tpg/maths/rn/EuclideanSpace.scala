@@ -1,6 +1,8 @@
 package com.tpg.maths.rn
 
-abstract class EuclideanSpace(override val elements: IndexedSeq[BigDecimal]) extends NDimensions {
+import com.tpg.maths.rn.ops.Norm
+
+abstract class EuclideanSpace(override val elements: IndexedSeq[BigDecimal]) extends NDimensions with Norm {
   type T = EuclideanSpace
 
   protected def add(that: EuclideanSpace): IndexedSeq[BigDecimal] = (0 until dimensions) map { i => this.elements(i) + that.elements(i) }
