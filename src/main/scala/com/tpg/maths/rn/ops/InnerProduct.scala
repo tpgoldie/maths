@@ -1,4 +1,4 @@
-package com.tpg.maths.rn
+package com.tpg.maths.rn.ops
 
 trait InnerProduct {
   type T <: InnerProduct

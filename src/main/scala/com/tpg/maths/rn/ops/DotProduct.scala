@@ -1,4 +1,6 @@
-package com.tpg.maths.rn
+package com.tpg.maths.rn.ops
+
+import com.tpg.maths.rn.NDimensions
 
 case class DotProduct(a: NDimensions, b: NDimensions) extends InnerProduct {
   type T = DotProduct
