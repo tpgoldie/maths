@@ -4,7 +4,7 @@ import com.tpg.maths.rn.quaternions.Quaternion.MinusOne
 import com.tpg.maths.rn.{RThree, EuclideanSpace}
 
 case class Quaternion(q0: BigDecimal, q1: BigDecimal, q2: BigDecimal, q3: BigDecimal)
-  extends EuclideanSpace(IndexedSeq(q0, q1, q2, q3)) with Symmetry with AntiSymmetry {
+  extends EuclideanSpace(IndexedSeq(q0, q1, q2, q3)) with Symmetry with AntiSymmetry with Re with Im {
 
   val q: RThree = RThree(q1, q2, q3)
 
@@ -21,7 +21,7 @@ case class Quaternion(q0: BigDecimal, q1: BigDecimal, q2: BigDecimal, q3: BigDec
     val r0 = that.q0
     val r = that.q
 
-    val s0: BigDecimal = q0 * r0 - (q dot r)
+    val s0: BigDecimal = (q0 * r0) - (q dot r)
     val s: RThree = (r * q0) + (q * r0) + (q x r)
 
     Quaternion(s0, s)
@@ -42,6 +42,14 @@ case class Quaternion(q0: BigDecimal, q1: BigDecimal, q2: BigDecimal, q3: BigDec
 
     Quaternion(s0, (r * q0) + (q * r0))
   }
+
+  override def re: BigDecimal = q0
+
+  override def im: RThree = q
+
+  def sbr: (J0, J1, J2, J3) = (J0(q0), J1(q1), J2(q2), J3(q3))
+
+  override def toString: String = s"${sbr._1.toString}${sbr._2.toString}${sbr._3.toString}${sbr._4.toString}"
 }
 
 object Quaternion {

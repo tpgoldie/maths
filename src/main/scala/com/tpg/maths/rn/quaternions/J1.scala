@@ -3,6 +3,7 @@ package com.tpg.maths.rn.quaternions
 import com.tpg.maths.rn.BasisElement
 
 case class J1(q1: BigDecimal = 1) extends BasisElement(Quaternion(0, 1, 0, 0), "J1"){
+  override def toString: String = s"${format(q1)}J1"
 }
 
 object J1 extends J1(1) {

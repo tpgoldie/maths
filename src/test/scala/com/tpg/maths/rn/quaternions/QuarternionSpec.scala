@@ -6,6 +6,14 @@ class QuarternionSpec extends FunSpec with Matchers {
   describe("A quaternion") {
     val q1 = Quaternion(1, -2, 0, -3)
 
+    it("has a string representation") {
+      q1.toString should be(s"${q1.q0}J0 - ${q1.q1.abs}J1 + ${q1.q2}J2 - ${q1.q3.abs}J3")
+    }
+
+    it("has a basis representation") {
+      q1.sbr should be(J0(1), J1(-2), J2(0), J3(-3))
+    }
+
     it ("can add another quaternion") {
       val actual = q1 + Quaternion(-3, 4, 5, 0)
       actual should be(Quaternion(-2, 2, 5, -3))
@@ -30,12 +38,20 @@ class QuarternionSpec extends FunSpec with Matchers {
       q1.conjugate should be(Quaternion(1, 2, 0, 3))
     }
 
-    it ("has an antisymmetric part on multiplication with another quaternionß") {
+    it ("has a real part") {
+      q1.re should be(q1.q0)
+    }
+
+    it ("has an imaginary part") {
+      q1.im should be(q1.q)
+    }
+
+    it ("has an antisymmetric part on multiplication with another quaternion") {
       val actual = q1.antisym(Quaternion(2, -3, 1, 5.5))
       actual should be(Quaternion(0, 3, 20, -2))
     }
 
-    it ("has a symmetric part on multiplication with another quaternionß") {
+    it ("has a symmetric part on multiplication with another quaternion") {
       val actual = q1.sym(Quaternion(2, -3, 1, 5.5))
       actual should be(Quaternion(12.5, -7, 1, -0.5))
     }
