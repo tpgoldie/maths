@@ -14,6 +14,8 @@ case class Quaternion(q0: BigDecimal, q1: BigDecimal, q2: BigDecimal, q3: BigDec
 
   def *(value: BigDecimal): Quaternion = Quaternion(0 until dimensions map {i => this.elements(i) * value })
 
+  def /(value: BigDecimal): Quaternion = Quaternion(0 until dimensions map {i => this.elements(i) / value })
+
   def *(that: Quaternion): Quaternion = {
     val q0 = this.q0
     val q = this.q
@@ -53,6 +55,8 @@ case class Quaternion(q0: BigDecimal, q1: BigDecimal, q2: BigDecimal, q3: BigDec
   override def toString: String = s"${sbr._1.toString}${sbr._2.toString}${sbr._3.toString}${sbr._4.toString}"
 
   def dot(that: Quaternion): BigDecimal = super.innerProduct(that).get
+
+  def inverse: Quaternion = conjugate / (this.norm * this.norm).doubleValue()
 }
 
 object Quaternion {

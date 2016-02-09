@@ -48,6 +48,12 @@ class QuarternionSpec extends FunSpec with Matchers {
       q1.norm should be(math.pow(value.sum, 0.5))
     }
 
+    it ("has an inverse") {
+      val squaresSummed = (Seq(1, -2, 0, -3).map { i => i * i}).sum
+
+      q1.inverse should be(Quaternion(1, 2, 0, 3) / squaresSummed)
+    }
+
     it ("has a real part") {
       q1.re should be(q1.q0)
     }
