@@ -59,6 +59,10 @@ case class Quaternion(q0: BigDecimal, q1: BigDecimal, q2: BigDecimal, q3: BigDec
   def dot(that: Quaternion): BigDecimal = super.innerProduct(that).get
 
   def inverse: Quaternion = conjugate / (this.norm * this.norm).doubleValue
+
+  def qHat: QHat = QHat(this)
+
+  def dash(value: QHat): Quaternion = value * this * value.conjugate
 }
 
 object Quaternion {
