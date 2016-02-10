@@ -63,6 +63,8 @@ case class Quaternion(q0: BigDecimal, q1: BigDecimal, q2: BigDecimal, q3: BigDec
   def qHat: QHat = QHat(this)
 
   def dash(value: QHat): Quaternion = value * this * value.conjugate
+
+  def dashInverse(value: QHat): Quaternion = value.conjugate * this * value
 }
 
 object Quaternion {

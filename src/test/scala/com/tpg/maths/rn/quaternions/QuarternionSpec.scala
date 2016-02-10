@@ -82,6 +82,16 @@ class QuarternionSpec extends FunSpec with Matchers {
       actual should be (qHat * r * qHat.conjugate)
     }
 
+    it("generate the inverse quaternionic conjugation with a unit quaternion") {
+      val qHat = q1.qHat
+      val r = Quaternion(-2, 3, 1, 5)
+
+      val rDash = r.dash(qHat)
+      val actual = rDash.dashInverse(qHat)
+
+      actual should be (qHat.conjugate * rDash * qHat)
+    }
+
     it ("has an antisymmetric part on multiplication with another quaternion") {
       val actual = q1.antisym(Quaternion(2, -3, 1, 5.5))
       actual should be(Quaternion(0, 3, 20, -2))
