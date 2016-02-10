@@ -30,5 +30,15 @@ class RThreeSpec extends FunSpec with Matchers {
       val actual = RThree(2, -1, 5) x RThree(-2, 0, -3)
       actual should be(RThree(3, -4, -2))
     }
+
+    it ("has a norm") {
+      val actual = RThree(2, 0, -5).norm
+      actual should be(math.pow(29.0, 0.5))
+    }
+
+    it ("can be scaled to its unit normal") {
+      val actual = RThree(2, 0, -5).nHat
+      actual should be(RThree(2, 0, -5) / math.pow(29.0, 0.5))
+    }
   }
 }

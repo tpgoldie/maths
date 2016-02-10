@@ -2,6 +2,8 @@ package com.tpg.maths.rn.quaternions
 
 import com.tpg.maths.rn.quaternions.Quaternion.MinusOne
 import com.tpg.maths.rn.{RThree, EuclideanSpace}
+import com.tpg.maths.trigonometry.Theta
+import com.tpg.maths.trigonometry.Theta._
 
 case class Quaternion(q0: BigDecimal, q1: BigDecimal, q2: BigDecimal, q3: BigDecimal)
   extends EuclideanSpace(IndexedSeq(q0, q1, q2, q3)) with Symmetry with AntiSymmetry with Re with Im {
@@ -56,7 +58,7 @@ case class Quaternion(q0: BigDecimal, q1: BigDecimal, q2: BigDecimal, q3: BigDec
 
   def dot(that: Quaternion): BigDecimal = super.innerProduct(that).get
 
-  def inverse: Quaternion = conjugate / (this.norm * this.norm).doubleValue()
+  def inverse: Quaternion = conjugate / (this.norm * this.norm).doubleValue
 }
 
 object Quaternion {
@@ -65,4 +67,6 @@ object Quaternion {
   def apply(elements: IndexedSeq[BigDecimal]): Quaternion = new Quaternion(elements(0), elements(1), elements(2), elements(3))
 
   def apply(q0: BigDecimal, q: RThree): Quaternion = Quaternion(q0, q.x, q.y, q.z)
+
+  def apply(theta: Theta, r: RThree): Quaternion = Quaternion(cos(theta / 2), r.nHat * sin(theta / 2))
 }

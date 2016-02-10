@@ -23,4 +23,8 @@ case class RThree(x: BigDecimal, y: BigDecimal, z: BigDecimal) extends Euclidean
   }
 
   def *(value: BigDecimal): RThree = RThree(x * value, y * value, z * value)
+
+  def /(value: BigDecimal): RThree = RThree(x / value, y / value, z / value)
+
+  def nHat: RThree = this / norm
 }

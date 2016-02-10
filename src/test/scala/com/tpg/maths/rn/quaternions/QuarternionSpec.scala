@@ -1,5 +1,7 @@
 package com.tpg.maths.rn.quaternions
 
+import com.tpg.maths.trigonometry.Theta
+import com.tpg.maths.trigonometry.Theta._
 import org.scalatest.{Matchers, FunSpec}
 
 class QuarternionSpec extends FunSpec with Matchers {
@@ -60,6 +62,16 @@ class QuarternionSpec extends FunSpec with Matchers {
 
     it ("has an imaginary part") {
       q1.im should be(q1.q)
+    }
+
+    it("generates a unit quaternion corresponding to rotation by angle theta about nHat " +
+      "Cayley-Klein parameters") {
+      val theta = Theta(math.Pi / 2)
+      val r = q1.q
+
+      val actual = Quaternion(theta, r)
+      actual.q0 should be(cos(theta / 2))
+      actual.q should be(r.nHat * sin(theta / 2))
     }
 
     it ("has an antisymmetric part on multiplication with another quaternion") {
